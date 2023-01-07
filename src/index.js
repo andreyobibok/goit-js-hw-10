@@ -23,7 +23,6 @@ function handleInput(event) {
     }
     else if (event.target.value != '') {
         fetchCountries(event)
-            .then(resp => resp.json())
             .then(data => {
                 if (data.length === 1) {
                     handleOneResult(data)
@@ -35,6 +34,7 @@ function handleInput(event) {
                     handleManyResults()
                 }
             })
+            .catch(err => {})
     }
 }
 
