@@ -18,11 +18,15 @@ info.style.width = "300px";
 input.addEventListener('input', debounce(handleInput, DEBOUNCE_DELAY));
 
 function handleInput(event) {
-    if (event.target.value == '') {
+    list.innerHTML = "";
+    info.innerHTML = "";
+    const eventValue = event.target.value.trim();
+    console.log(eventValue);
+    if (eventValue == '') {
         return
     }
-    else if (event.target.value != '') {
-        fetchCountries(event)
+    else if (eventValue != '') {
+        fetchCountries(eventValue)
             .then(data => {
                 if (data.length === 1) {
                     handleOneResult(data)
